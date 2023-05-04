@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>My Movies</h1>
+    <input type="text" name="title" id="title" />
+    <button id="add-movies">Add</button>
+    <button id="load-movies">Load</button>
+
+    <ul id="movie-list">
+
+    </ul>
+
+    <script>
+        let url = 'http://localhost:3030/data'
+        let buttonElement = document.getElementById('load-movies');
+        let input = document.getElementById('title');
+        let addButtonElement = document.getElementById('add-movies');
+        let movieListElement = document.getElementById('movie-list');
+        
+        buttonElement.addEventListener('click', () => {
+            fetch(`${url}/movies`)
+                .then(res => res.json())
+                .then(movies => {
+                    Object.values(movies)
+                        .forEach(movie => {
+                            let movieElement = document.createElement('li');
+                            movieElement.textContent = movie.title;
+                            movieListElement.appendChild(movielement);
+                        })
+                });
+        });
+
+        addButtonElement.addEventListener('click', () => {
+            let title = input.value;
+
+            fetch(`${url}/movies`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ title })
+            })
+                .then(res => res.json())
+                .then(movie => {
+                    console.log(movie);
+                })
+        })
+    </script>
+
+</body>
+
+</html>

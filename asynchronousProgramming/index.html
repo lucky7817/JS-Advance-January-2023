@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+
+    <h1>My Promise sample<h1>
+            <button id="promise">Push</button>
+
+            <div id="result"></div>
+
+            <script>
+                let buttonEl = document.getElementById('promise');
+                let divEl = document.getElementById("result")
+                buttonEl.addEventListener('click', (e) => {
+debugger
+                    let ring = new Promise(function (resolve, reject) {
+                        setTimeout(() => {
+                            if (Math.random() > 0.5) {
+                                //resolve('Just Married...');
+                                divEl.textContent = 'Just Married...';
+                            } else {
+                                //reject('Sorry, I am not ready');
+                                divEl.textContent = 'Sorry, I am not ready';
+                            }
+                        }, 2000);
+                    });
+
+                    ring.then((result) => {
+                        console.log(result);
+                    });
+                    ring.catch((reason) => {
+                        console.log(reason);
+
+                    });
+                });
+            </script>
+
+
+</body>
+
+</html>

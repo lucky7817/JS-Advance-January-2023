@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../Fundamental"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Advanced"
+	}
+}
